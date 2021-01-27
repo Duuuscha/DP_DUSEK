@@ -1,0 +1,90 @@
+\documentclass[a4paper]{article}
+%\usepackage[left=30mm,right=30mm,top=30mm,bottom=30mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[czech]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\usepackage{enumitem}
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+\usepackage{subcaption} %  for subfigures environments 
+\usepackage[font={small},figurename=Obr.,labelfont={color=black,bf}]{caption}
+\usepackage[toc,page]{appendix}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pdfpages}
+\newcommand\myshade{85}
+\colorlet{mylinkcolor}{violet}
+\colorlet{mycitecolor}{YellowOrange}
+\colorlet{myurlcolor}{Aquamarine}
+
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  linkcolor  = mylinkcolor!\myshade!black,
+  citecolor  = mycitecolor!\myshade!black,
+  urlcolor   = myurlcolor!\myshade!black,
+  colorlinks = true,
+}
+\usepackage{cleveref}
+\usepackage[sorting=none]{biblatex}
+\addbibresource{reference.bib}
+
+\pdfsuppresswarningpagegroup=1
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        
+        \LARGE
+        České vysoké učení technické v Praze\\[0.1cm]
+       	Fakulta strojní\\[0.4cm]
+		\Large
+        Ústav přístrojové a řídící techniky\\[0.25cm]
+        \large
+        Automatizace a průmyslová informatika\\
+
+		\vfill
+            
+        \includegraphics[width=0.6\textwidth]{lion_white}
+                    
+        \vfill
+            
+        Předmět\\[0.5cm]
+        \Large
+        Diplomová práce
+
+        \vspace{0.8cm}           
+
+        \Huge
+        \textbf{Název práce}
+            
+        \vspace{0.5cm}
+        \LARGE
+        Podnázev            
+        \vspace{3cm}
+
+        \today \hfill \textbf{Roman Dušek}
+    \end{center}
+\end{titlepage}
+\newpage
+\tableofcontents
+\newpage
+
+\newpage
+\nocite{*}
+\printbibliography
+\addcontentsline{toc}{part}{Odkazy}
+\newpage
+
+\appendix
+\part*{Přílohy}
+\addcontentsline{toc}{part}{Přílohy}
+
+
+	
+\end{document}
