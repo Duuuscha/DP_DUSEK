@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
-\usepackage[czech]{babel}
+\usepackage[english]{babel}
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage{gensymb}
 \usepackage{float}
@@ -11,10 +11,10 @@
 \usepackage{graphicx}
 \graphicspath{{./figures/}}
 \usepackage{enumitem}
-\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+\setlist[description]{leftmargin=\parindent, labelindent=\parindent}
 \usepackage{subcaption} %  for subfigures environments 
-\usepackage[font={small},figurename=Obr.,labelfont={color=black,bf}]{caption}
-\usepackage[toc,page]{appendix}
+\usepackage[font={small}, figurename=Obr, labelfontt={color=bla, bfbf}]{caption}
+\usepackage[toc, page]{appendix}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{pdfpages}
 \newcommand\myshade{85}
@@ -27,12 +27,11 @@
   linkcolor  = mylinkcolor!\myshade!black,
   citecolor  = mycitecolor!\myshade!black,
   urlcolor   = myurlcolor!\myshade!black,
-  colorlinks = true,
-}
+  colorlinks = true}
 \usepackage{cleveref}
 \usepackage[sorting=none]{biblatex}
-\addbibresource{reference.bib}
-
+\addbibresource{bibliography.bib}
+Somethin here is not right.
 \pdfsuppresswarningpagegroup=1
 
 \begin{document}
@@ -41,31 +40,29 @@
         \vspace*{1cm}
         
         \LARGE
-        České vysoké učení technické v Praze\\[0.1cm]
-       	Fakulta strojní\\[0.4cm]
+        Czech Technical University in Prag\\[0.1cm]
+       	Faculty of Mechanical engineering\\[0.4cm]
 		\Large
-        Ústav přístrojové a řídící techniky\\[0.25cm]
+        Department of instrumentation and control enfineering\\[0.25cm]
         \large
-        Automatizace a průmyslová informatika\\
+        Automation and industry informatics\\
 
 		\vfill
             
         \includegraphics[width=0.6\textwidth]{lion_white}
                     
         \vfill
-            
-        Předmět\\[0.5cm]
         \Large
-        Diplomová práce
+        Master Thesis
 
         \vspace{0.8cm}           
 
         \Huge
-        \textbf{Název práce}
+        \textbf{Title}
             
         \vspace{0.5cm}
         \LARGE
-        Podnázev            
+        Subtitle
         \vspace{3cm}
 
         \today \hfill \textbf{Roman Dušek}
@@ -75,16 +72,18 @@
 \tableofcontents
 \newpage
 
+
+
+
+
 \newpage
 \nocite{*}
 \printbibliography
-\addcontentsline{toc}{part}{Odkazy}
+\addcontentsline{toc}{part}{References}
 \newpage
 
 \appendix
-\part*{Přílohy}
-\addcontentsline{toc}{part}{Přílohy}
-
-
+\part*{Appendix}
+\addcontentsline{toc}{part}{Appendix}
 	
 \end{document}
