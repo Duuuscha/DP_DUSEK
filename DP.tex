@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper, twoside]{article}
 %\usepackage[left=30mm,right=30mm,top=30mm,bottom=30mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -13,15 +13,14 @@
 \usepackage{enumitem}
 \setlist[description]{leftmargin=\parindent, labelindent=\parindent}
 \usepackage{subcaption} %  for subfigures environments 
-\usepackage[font={small}, figurename=Obr, labelfontt={color=bla, bfbf}]{caption}
-\usepackage[toc, page]{appendix}
+\usepackage[font={small},figurename=Obr.,labelfont={color=black,bf}]{caption}
+\usepackage[toc,page]{appendix}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{pdfpages}
 \newcommand\myshade{85}
 \colorlet{mylinkcolor}{violet}
 \colorlet{mycitecolor}{YellowOrange}
 \colorlet{myurlcolor}{Aquamarine}
-
 \usepackage[unicode]{hyperref}
 \hypersetup{
   linkcolor  = mylinkcolor!\myshade!black,
@@ -31,7 +30,6 @@
 \usepackage{cleveref}
 \usepackage[sorting=none]{biblatex}
 \addbibresource{bibliography.bib}
-Somethin here is not right.
 \pdfsuppresswarningpagegroup=1
 
 \begin{document}
@@ -72,7 +70,67 @@ Somethin here is not right.
 \tableofcontents
 \newpage
 
+\section{Introduction}
+\label{sec:introduction}
 
+\section{Background}
+\label{sec:background}
+
+\subsection{Supervised learning}
+\label{sub:supervised_learning}
+
+\subsection{Neural networks}
+\label{sub:neural_networks}
+
+\subsubsection{Perceptron}
+\label{ssub:perceptron}
+
+\subsubsection{Learning and optimalization}
+\label{ssub:learning_and_optimalization}
+
+\subsection{Recurrent neural networks}
+\label{sub:recurrent_neural_networks}
+
+
+\subsubsection{Vanilla version}
+\label{ssub:vanilla_version}
+
+\subsubsection{Long-short-term-memories}
+\label{ssub:long_short_term_memories}
+
+\subsubsection{Gated recurrent units}
+\label{ssub:gated_recurrent_units}
+
+
+\subsubsection{Other types of RNN}
+\label{ssub:other_types_of_rnn}
+
+\subsubsection{Problems using RNN}
+\label{ssub:problems_using_rnn}
+
+
+\subsection{High order neural networks}
+\label{sub:high_order_neural_networks}
+
+\subsubsection{High order neural unit}
+\label{ssub:high_order_neural_unit}
+
+\subsubsection{Recurrent HONN}
+\label{ssub:recurrent_honn}
+
+\subsubsection{Problems using HONN}
+\label{ssub:problems_using_honn}
+
+
+\section{Experimental Setup}
+\label{sec:experimental_setup}
+
+
+\section{Discussion}
+\label{sec:discussion}
+
+\section{Conclusion}
+\label{sec:conclusion}
 
 
 
@@ -85,5 +143,6 @@ Somethin here is not right.
 \appendix
 \part*{Appendix}
 \addcontentsline{toc}{part}{Appendix}
-	
+
+
 \end{document}
