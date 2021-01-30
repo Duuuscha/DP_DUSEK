@@ -1,6 +1,4 @@
 import numpy as np
-import nnfs
-from nnfs.datasets import spiral_data
 
 class Layer_Dense:
     
@@ -10,17 +8,19 @@ class Layer_Dense:
         self.biases = np.zeros((1, n_neurons))
         
     def forward(self, inputs):
+        self.inputs = inputs
         self.output = np.dot(inputs, self.weights) + self.biases
         
     def backward(self, dvalues):
         self.dweights = np.dot(self.inputs.T, dvalues)
         self.dbiases = np.sum(dvalues, axis=0, keepdims=True)
-        self.inputs = np.dot(dvalues, self.weights.T)
+        self.dinputs = np.dot(dvalues, self.weights.T)
         
 
 class Acti_Relu:
     
     def forward(self, inputs):
+        self.inputs = inputs
         self.output = np.maximum(0,inputs)
         
     def backward(self, dvalues):
@@ -62,14 +62,14 @@ class Loss_CategoCrossentropy(Loss): # inheriting LOSS class
     def forward(self, y_pred, y_true):
         
         samples = len(y_pred)
-        y_pred_clipped = np.clip(y_pred, 1e-7, 1-1e-7) # to prevent overflow and dividing by 0
-        
-        if len(class_targets.shape)==1:
-            correct_confidence = softmax_out[
-                                    range(len(softmax_out)),
-                                    class_targets]
-        elif len(class_targets.shape) == 2:
-            correct_confidence = np.sum(softmax_out * class_targets, axis=1)
+        # to prevent overflow and diveding by 0
+        y_pred_clipped = np.clip(y_pred, 1e-7, 1-1e-7)        
+        if len(y_true.shape)==1:
+            correct_confidence = y_pred_clipped[
+                                    range(len(y_pred_clipped)),
+                                    y_true]
+        elif len(y_true.shape) == 2:
+            correct_confidence = np.sum(y_pred_clipped * y_true, axis=1)
 
         neg_log = -np.log(correct_confidence)
 
@@ -96,6 +96,7 @@ class Activation_Softmax_Loss_CategoricalCrossentropy():
         self.loss = Loss_CategoCrossentropy()
         
     def forward(self, inputs, y_true):
+        
         self.activation.forward(inputs)
         
         self.output = self.activation.output
@@ -115,25 +116,59 @@ class Activation_Softmax_Loss_CategoricalCrossentropy():
         
         self.dinputs = self.dinputs / samples
 
-##############################################################################
+class Optimizer_SGD:
+    
+    def __init__(self, learning_rate=1.0, decay = 0., momentum=0., epsilon=1e-7):
+        self.learning_rate = learning_rate
+        self.current_learning_rate = learning_rate
+        self.decay = decay
+        self.iterations = 0
+        self.momentum = momentum
+        
+    def pre_update_params(self):
+        if self.decay:
+            self.current_learning_rate = self.learning_rate * \
+                (1. / (1. + self.decay * self.iterations))
+        
+    def update_params(self, layer):
+        
+        if self.momentum:
+            
+            if not hasattr(layer, "weigh_momentums"):
+                layer.weight_momentums = np.zeros_like(layer.weights)
 
+                layer.bias_momentums = np.zeros_like(layer.biases)
+                
+            weight_updates = self.momentum * layer.weight_momentums - \
+                            self.current_learning_rate * layer.dweights
+            
+            layer.weight_momentums = weight_updates 
 
+            bias_updates = self.momentum * layer.bias_momentums - \
+                            self.current_learning_rate * layer.dbiases
+          
+            layer.bias_momentums = bias_updates
+            
+        else: 
+            weight_updates = -self.current_learning_rate * layer.dweights
+            bias_updates = -self.current_learning_rate * layer.dbiases
+            
+        if not hasattr(layer, "weight_cache"):
+                layer.weight_cache = np.zeros_like(layer.weights)
 
-
-
-X, y = spiral_data(samples=100, classes= 3)
-
-dense1 = Layer_Dense(2, 3)
-activation1 = Acti_Relu()
-
-dense2 = Layer_Dense(3, 3)
-loss_activation = Activation_Softmax_Loss_CategoricalCrossentropy
-
-dense1.forward(X)
-activation1.forward(dense1.output)
-
-dense2.forward(activation1.output)
-loss = loss_activation.forward(dense2.output, y)
-
-print(loss_activation.output[:5])
-
+                layer.bias_cache = np.zeros_like(layer.biases)
+            
+            layer.weight_cache += layer.dweights**2
+            layer.bias_cache += layer.dbiases**2
+                
+            weight_updates = -self.current_learning_rate * layer.dweights / \
+                                (np.sqrt(layer.weight_cache)+self.epsilon)
+            
+            biases_updates = -self.current_learning_rate * layer.dbiases / \
+                                (np.sqrt(layer.bias_cache)+self.epsilon)
+        
+        layer.weights += weight_updates
+        layer.biases += bias_updates
+    
+    def post_update_params(self):
+        self.iterations += 1
