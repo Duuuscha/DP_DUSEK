@@ -1,4 +1,4 @@
-\immediate\write18{makeindex \jobname.nlo -s nomencl.ist -o \jobname.nls}
+%\immediate\write18{makeindex \jobname.nlo -s nomencl.ist -o \jobname.nls}
 \documentclass[a4paper, twoside]{article}
 %\usepackage[left=30mm,right=30mm,top=30mm,bottom=30mm]{geometry}
 \usepackage[utf8]{inputenc}
@@ -8,13 +8,13 @@
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage{gensymb}
 \usepackage{float}
-\usepackage{csquotes}
+\usepackage{csquotes, xpatch}
 \usepackage{graphicx}
 \graphicspath{{./figures/}}
 \usepackage{enumitem}
 \setlist[description]{leftmargin=\parindent, labelindent=\parindent}
 \usepackage{subcaption} %  for subfigures environments 
-\usepackage[font={small},figurename=Obr.,labelfont={color=black,bf}]{caption}
+\usepackage[font={small},figurename=Fig.,labelfont={color=black,bf}]{caption}
 \usepackage[toc,page]{appendix}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{pdfpages}
@@ -31,9 +31,10 @@
   colorlinks = true}
 \usepackage{cleveref}
 
-% nebo "iso-numeric", "iso-authoryear"
-\usepackage[style=iso-numeric, sortlocale=cs_CZ, sorting=none, url=true]{biblatex}
+% nebo "iso-numeric", "iso-authoryear", sortlocale=cs_CZ, sorting=none,
+\usepackage[style=iso-numeric, sortlocale=cs_CZ, sorting=none]{biblatex}
 \addbibresource{bibliography.bib}
+
 \pdfsuppresswarningpagegroup=1
 
 \usepackage[]{nomencl}
@@ -87,7 +88,6 @@
 \nomenclature{HONU}{High Order Neural Unit}%
 \nomenclature{HONN}{High Order Neural Network}%
 \nomenclature{RHONN}{Recurrent High Order Neural Network}%
-
 
 
 \section{Introduction}
@@ -157,7 +157,7 @@
 \newpage
 \nocite{*}
 \printbibliography
-\addcontentsline{toc}{part}{References}
+%\addcontentsline{toc}{part}{References}
 \newpage
 
 \appendix

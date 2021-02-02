@@ -21,7 +21,7 @@ link-citations: true
 \newpage
 
 
-# Fundamental of Higher Order Neural Networks for Modeling and Simulation [@guptaFundamentalsHigherOrder]
+# Fundamental of Higher Order Neural Networks for Modeling and Simulation [@gupta2012]
 
 ## Introduction
 
@@ -58,7 +58,8 @@ $$y = \phi(u)$$
 
 if a weight is high it shows correlation between components of input patterns
 
-### Learning algortihm for second order neural units
+
+### Learning algorithm for second order neural units
 
 The purpose of the neural units is to minimize the error E by adapting the weight
 $$E(k)=\frac{1}{2}e(k)^2 \quad ; \quad e(k)=y(k) -y_d(k) $$
@@ -110,9 +111,9 @@ Table with mathemathical structure and learning rule
 
 
 
-# Nonconventional Neural Architectures and their Advantages for Technical Applications [@bukovskyNonconventionalNeuralArchitectures]
+# Nonconventional Neural Architectures and their Advantages for Technical Applications [@bukovsky2012]
 
-# Introduction #
+## Introduction
 
 - first mathematical model of neuron 1943
 - principals for modeling of dynamic systems
@@ -120,7 +121,7 @@ Table with mathemathical structure and learning rule
 	- order of dynamics of state space representation of a neuron
 	- adaptable time delays
 
-## HONU, HONN
+### HONU, HONN
 
 - PNN - polynomial neural networks
 - LNU, QNU, CNU
@@ -133,7 +134,7 @@ continuous vs discrete
 implementation of static/dynamic HONN
 
 
-## Gradient optimization methods
+### Gradient optimization methods
 
 - back propagation
 - gradient descent rule
@@ -151,10 +152,93 @@ implementation of static/dynamic HONN
 
 - batch training technique can be implemented as combination of RTRL and L-M algorithm => RHONU
 
-### Weighty update stability of static and dynamic version	
+## Weight update stability of static and dynamic version	
 
 
-# Artificial High Order NN for Economics and Bussiness [@zhangArtificialHigherOrder] #
+# Artificial High Order NN for Economics and Bussiness [@zhangArtificialHigherOrder2008] #
+
+
+## Chapter 1
+- use case of HONN
+- model 1, 1b, 0
+	- model 1 is containing one hidden layer with linear units
+	- model 1b is containing two
+
+**Polynomial HONN** uses poly-func as activation function
+
+**Neural Adaptive HONN** uses adaptive functions as neuron
+
+### Learning algorithm of HONN
+
+### PHONN
+
+### Trigonometric HONN
+- uses trigonometric functions as activation functions
+
+### Ultra high frequency cosine and sine HONN
+
+### SINC and Sine Polynomial HONN
+
+## Chapter 3
+
+- HONN first introduced in (Giles, Maxwell 1987)
+- hyperbolic tangent function
+$$S(x)=\frac{e^x - e^{-x}}{e^{x}+e^{-x}}$$
+
+## Chapter 5
+- info about "High order Flexibel Neural Tree"
+
+## Chapter 6
+- most basic motivation of stock forecasting is financial gain
+- motivation behind recurrent is that patterns may repeat in time
+
+### Background HONN
+
+### HONN structure
+
+## Chapter 7
+**Problems of ANNs**
+- long convergence time
+- can be stuck in local minima
+- unable to handle high-frequency, non-linear and discontinuous data
+- black box
+
+**HONN**	can be considered as "open box"
+
+
+## Chapter 8
+
+
+
+
+# Adaptive control with RHONN [@rovithakis2000]
+
+## Introduction #
+
+- for training model uses current and previous inputs, as well as the previous outputs
+- in discrete outputs we need to discretized the model
+- model is trained to identify the inverse dynamics of the plant instead of the forward dynamics
+- by connecting the past neural output as input we make dynamic network that is highly nonlinear
+
+**Problem with dynamic neural networks** that are based on static multilayer networks is that criterial functions possesses many local minima.
+
+### Book goals ##
+
+**Chapter 2** introduces RHONN\
+**Chapter 3** online identification
+
+## Identification using RHONN
+
+### Model description
+
+$$\dot{x}_i=-a_{i}x_{i}+b_{i} \left[ \sum_{k=1}^L w_{ik}z_k\right]$$ 
+
+### Learning algorithms
+
+
+# Discrete-time HONN [@sanchez2008]
+
+
 
 \newpage
 
