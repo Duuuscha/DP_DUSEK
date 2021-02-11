@@ -58,7 +58,6 @@ $$y = \phi(u)$$
 
 if a weight is high it shows correlation between components of input patterns
 
-
 ### Learning algorithm for second order neural units
 
 The purpose of the neural units is to minimize the error E by adapting the weight
@@ -208,7 +207,90 @@ $$S(x)=\frac{e^x - e^{-x}}{e^{x}+e^{-x}}$$
 
 ## Chapter 8
 
+### Introduction
+- NN are data-driven we dont need prior assumptions
+- NN can generalise
+- they are universal approximators
 
+**Well know problems with NNs**
+- different results when tested on same datasets
+- size sensitive, they suffer of over fitting
+
+**Offline network** - goal of minimizing error over whole dataset\
+**Online network** - aim is to adapt to local properties of the observed signal. They create detailed mapping of the underlying structure within the data
+
+### Overview of NN
+- using nonlinear transfer function they can carry out non-linear mappings
+- history of milestone
+
+#### Neuron structure
+
+
+#### Activation Functions\
+- threshold, linear, logistic sigmoid function
+
+### Network structures
+**Feed-forward**
+-single layer (perceptron, ADALINE), multi layer
+**RNN**
+- using feedback loop\
+
+**Fully recurrent**
+	- all connections are trainable\
+
+**Partial recurrent**
+	- only feed-forward units are trainable, feedback utilize by *context unit*
+
+- feedback results in nonlinear behavior, that provides networks with capabilities to storage information.
+
+#### Lerning RNN
+
+**Backpropagation through time**
+
+- main idea is to unfold the RNN into an equivalent feed-forward network
+
+**Real Time recurrent learning**
+
+- each synaptic weight is updated for each representation of training set $\to$ no need to allocate memory proportional to the number of sequences
+
+### HONN
+(Giles & Maxwell, 1987)
+
+- functional link network (Pao, 1989)
+
+**Popular multi layer HONN**\
+
+**Sigma-pi NN** (Rumelhar, Hinto & William, 1986)
+
+- summing of inputs and product units (order is determined by number of inputs)
+
+**Pi-Sigma NN** (Shin & Ghosh, 1992)
+
+- summing of inputs and one product unit (fewer number of weights)
+
+**Ridge polynomial neural network** (Shin & Ghost, 1991)
+
+- using increasing number of pi-sigma units
+
+#### High order interactions in Biological Networks
+
+### Pipelined RNNs
+(Haykin & Li, 1995)
+
+- engineering principle - "divide and conquer"
+- consist of two subsections - linear and nonlinear
+
+#### RTRL for PRNN
+
+### Second order PRNN
+
+## Chapter 9 
+
+### Second order Single layer RNN
+
+## Chapter 10
+- The lowest error of multilayer network occurs for one trained with Levenberg-Marquardt
+- Multilayer networks have higher error
 
 
 # Adaptive control with RHONN [@rovithakis2000]
@@ -237,6 +319,35 @@ $$\dot{x}_i=-a_{i}x_{i}+b_{i} \left[ \sum_{k=1}^L w_{ik}z_k\right]$$
 
 
 # Discrete-time HONN [@sanchez2008]
+- delete, not interesting
+
+# Recurrent Neural Networks Tutotrial, Theano, NLP [@britz2015]
+
+## Part 1
+
+### RNN overview
+
+- idea behind RNN is to make use of sequential information.
+- we want to know what kind of information came before to deside output, this is something which we know as memory
+	- this is limited only for looking few steps back
+- we can unroll RNN to visualize the complete network
+- RNN shares the same parameters across all steps
+
+#### Training of RNN
+- BPTT
+
+### LSTM
+
+- these are very good at capturing long-term dependencies using various types of gates
+
+
+
+$x_t$ is input at time $t$\
+$s_t$ is a hidden state\
+input at current state is computated as $s_t = f(Ux_t+Ws_{t-1})$\
+$o_{t}$ is output at time step $t$\
+
+
 
 
 
