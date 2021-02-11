@@ -340,15 +340,109 @@ $$\dot{x}_i=-a_{i}x_{i}+b_{i} \left[ \sum_{k=1}^L w_{ik}z_k\right]$$
 
 - these are very good at capturing long-term dependencies using various types of gates
 
-
-
 $x_t$ is input at time $t$\
 $s_t$ is a hidden state\
 input at current state is computated as $s_t = f(Ux_t+Ws_{t-1})$\
-$o_{t}$ is output at time step $t$\
+$o_{t}$ is output at time step $t$
+
+## Part 2 [@britz2015]
+- Building RNN class using numpy
+- calculation loss using *cross-entropy*
+- training model using BPTT
+- gradient checking
+
+## Part 3 [@britz2015b]
+
+- BPTT
+- Vanishing Gradient Problem
+	- problem of learning long-range dependencies-
+	- proper initialization of W helps, regularization, ReLU instead of tanh
+	- using LSTM and GRU
+- Exploding gradient problem
+	- clipping weights when they get too high
+
+## Part 4 [@britz2015c]
+
+- implementing LSTM
+	- $i, f, o$ are called input, forget and output gate. Called gate because the sigmoid function squashes the value between 0/1. By multiplying them with vector you define how much of that other vector you let through. 
+		- Input gate defines how much of the newly computed state for the current input will be let through.
+		- Fogrget gate defines how much of the previous state is gonna be kept.
+		- Output gate defines how much of the external state is gonna be exposed to the external network
+	- $g$ je a candidat hidden state, computed based on current and previous hidden state.
+	- $c_t$ is internal memory of the unit, combined of last internal memory $c_{t-1}$ multiplied with forget gate and newly computed hidden state.
+	- $s_t$ is output hidden state computed by multiplying memory $c_t$ with output gate
+
+$$i =\sigma(x_tU^i + s_{t-1} W^i) \\ f =\sigma(x_t U^f +s_{t-1} W^f) \\ o =\sigma(x_t U^o + s_{t-1} W^o) \\ g =\ tanh(x_t U^g + s_{t-1}W^g) \\ c_t = c_{t-1} \circ f + g \circ i \\ s_t =\tanh(c_t) \circ o $$
+
+- implementing GRU, code in Theano
+	- $r$ reset gate, determines, how to combine the new input with the previous memor, and the update gate
+	- $z$ update gate, defines how much of the previous memory to keep around.
+	 
+
+$$ z =\sigma(x_tU^z + s_{t-1} W^z) \\ r =\sigma(x_t U^r +s_{t-1} W^r) \\ h = tanh(x_t U^h + (s_{t-1} \circ r) W^h) \\ s_t = (1 - z) \circ h + z \circ s_{t-1} $$
+
+# Recurrent neural network for prediction [@mandic2001]
+
+## Introduction
+
+- history about neural networks
+- structure of neural network
+	- performance achieved via dense interconnection of simple computational elements
+	- interconnected neural provide robustness
+- perspective on time series prediction
+	- Yule 1927, introduction of autoregressive model
+		- AR, MA and ARMA are linear
+	- high computational complexity of RNN ($\mathcal{O}(N^4)$)
+	- Pros of using RNN from time series prediction
+		- are fast, if not faster than most available statistical techniques
+		- self monitoring
+		- accurate if not accurate as most s. t.
+		- iterative forecasts
+		- they cope with non-linearity and non-stationary
+		- parametric and non-parametric prediction
+	- Most difficult systems to predict
+		- non-stationary dynamics, time-variant (speech)
+		- noise, experiment error (bio-signals)
+		- dealing with short time series (heart rate)
+	- two IEEE dedicated issues of ANN for signal processing
+
+## Fundamentals
+
+**Adaptability** is ability to react in sympathy with disturbance
+- system learned by supervised learning is adaptive
+**Gradient calculation**\
+
+**Leaning methodology**
+- deterministic, stochastic, adaptive,
+
+**Batch vs. incremental**
+
+**Curse of dimensionality**
+
+**Transformation on the input data**\
+- normalisation - dividing each input by it's squared norm
+- Rescaling - multiplying/adding constant
+- standardisation - around 0 (-1 to 1)
+	- helps with change of weights
+- Principal component analysis
+
+Nonlinear transformation as $log()$
+
+## Network Architectures for Prediction
+
+- commonality of adaptive filters and RNN
+
+## Activation functions used in Neural Networks
+
+- mostly sigmoid informatio
+
+## RNN architecture
 
 
+# 30 years of adaptive neural network [@widrow1990]
 
+## Nonlinear classifier
+- using polynomial preprocessor
 
 
 \newpage
