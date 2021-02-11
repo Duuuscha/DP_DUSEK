@@ -154,7 +154,7 @@ implementation of static/dynamic HONN
 ## Weight update stability of static and dynamic version	
 
 
-# Artificial High Order NN for Economics and Bussiness [@zhangArtificialHigherOrder2008] #
+# Artificial High Order NN for Economics and Bussiness [@zhang2008] #
 
 
 ## Chapter 1
