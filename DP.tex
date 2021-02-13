@@ -31,6 +31,12 @@
   colorlinks = true}
 \usepackage{cleveref}
 
+\usepackage{pgfplots}
+\DeclareUnicodeCharacter{2212}{−}
+\usepgfplotslibrary{groupplots,dateplot}
+\usetikzlibrary{patterns,shapes.arrows}
+\pgfplotsset{compat=newest}
+
 % nebo "iso-numeric", "iso-authoryear", sortlocale=cs_CZ, sorting=none,
 \usepackage[style=iso-numeric, sortlocale=cs_CZ, sorting=none]{biblatex}
 \addbibresource{bibliography.bib}
@@ -92,6 +98,13 @@
 
 \section{Introduction}
 \label{sec:introduction}
+
+\begin{figure}[H]
+	\centering
+	\input{./plot_data/test.tex}
+	\caption{Testing tikz2plot}
+	\label{fig:}
+\end{figure}
 
 \section{Background}
 \label{sec:background}
